@@ -17,3 +17,6 @@ Criar um programa em Python que acesse um grupo no Whatsapp e obtenha o máximo 
 ## Sugestões
 - Utilizar a ferramenta Waha (https://waha.devlike.pro/) para facilitar a sua integração com o Whatsapp.
 - Utilizar a Flask ou FastApi para criação de webhooks que recebem as mensagens.
+
+## Entrega
+Ao finalizar o desafio envie um email para people@sejasegura.com.br com o repositorio da sua submissão
