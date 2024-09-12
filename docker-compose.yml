@@ -9,7 +9,7 @@ services:
       - 5432:5432
   api:
     build:
-      "./api"
+      "./"
     ports:
       - "8000:8000"
   waha:

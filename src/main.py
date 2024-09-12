@@ -19,8 +19,13 @@ async def root():
 @app.post("/webhook")
 async def webhook(request: Request):
     body = await request.json()
+    grupo = body["payload"]["from"]
+    #grupo id é um grupo aletório escolhido, basta substituir para algum grupo específico
+    #grupo_id = "11111111111@c.us"
+    #if grupo = ""
     data = body["payload"]["body"]
     insert_message(data)
+    insert_message(grupo)
     return {"status": "json recebido"}
 
 @app.get("/start-session")
