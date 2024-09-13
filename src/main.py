@@ -20,13 +20,18 @@ async def root():
 async def webhook(request: Request):
     body = await request.json()
     grupo = body["payload"]["from"]
-    #grupo id é um grupo aletório escolhido, basta substituir para algum grupo específico
-    right(grupo, 15)
-    #grupo_id = "11111111111@c.us"
-    #if grupo = ""
+    grupo_desejado = "1629810428@g.us"
+    data = body["payload"]["body"]    
+    # Divide a string no caractere '-'
+    partes = grupo.split('-')
     
-    data = body["payload"]["body"]
-    insert_message(data)
+    # Verifica se há uma parte após o '-'
+    if len(partes) > 1:
+        grupo_recebido = partes[1]
+        
+        # Verifica se a parte após '-' corresponde ao grupo desejado
+        if grupo_recebido == grupo_desejado:
+            insert_message(data)
     return {"status": "json recebido"}
 
 @app.get("/start-session")
@@ -63,7 +68,7 @@ async def start_session():
 @app.post("/send-test-message")
 async def send_test_message():
     payload = {
-        "chatId": "5521971980544@c.us",
+        "chatId": "5521979193228@c.us",
         "text": "Teste de mensagem!",
         "session": "default"
     }
