@@ -12,9 +12,11 @@ services:
       "./"
     ports:
       - "8000:8000"
+    depends_on:
+      - db
   waha:
     image: devlikeapro/waha:latest
     container_name: waha-container
     restart: always
     ports:
-      - "3000:3000"  
+      - "3000:3000"

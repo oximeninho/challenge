@@ -23,9 +23,9 @@ async def webhook(request: Request):
     #grupo id é um grupo aletório escolhido, basta substituir para algum grupo específico
     #grupo_id = "11111111111@c.us"
     #if grupo = ""
+    print(body["payload"])
     data = body["payload"]["body"]
     insert_message(data)
-    insert_message(grupo)
     return {"status": "json recebido"}
 
 @app.get("/start-session")
@@ -86,7 +86,7 @@ insert into Mensagens(data) values('teste');
 def insert_message(mensagem):
     try:
         with psycopg.connect(
-            dbname="postgres", user="postgres", password=1234, host="localhost", port=5432
+            dbname="postgres", user="postgres", password=1234, host="db", port=5432
         ) as conn:
             conn.autocommit = True
             # Criando um cursor usando o método cursor()
@@ -98,7 +98,7 @@ def insert_message(mensagem):
 def create_table():
     try:
         with psycopg.connect(
-            dbname="postgres", user="postgres", password=1234, host="localhost", port=5432
+            dbname="postgres", user="postgres", password=1234, host="db", port=5432
         ) as conn:
             conn.autocommit = True
             # Criando um cursor usando o método cursor()
@@ -108,4 +108,6 @@ def create_table():
         print("Ocorreu um erro:", e) 
 
 if __name__ == "__main__":
+    create_table()
     uvicorn.run(app, port=8000, host="0.0.0.0")
+ 
