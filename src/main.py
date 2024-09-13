@@ -21,9 +21,10 @@ async def webhook(request: Request):
     body = await request.json()
     grupo = body["payload"]["from"]
     #grupo id é um grupo aletório escolhido, basta substituir para algum grupo específico
+    right(grupo, 15)
     #grupo_id = "11111111111@c.us"
     #if grupo = ""
-    print(body["payload"])
+    
     data = body["payload"]["body"]
     insert_message(data)
     return {"status": "json recebido"}
@@ -107,7 +108,6 @@ def create_table():
     except Exception as e:
         print("Ocorreu um erro:", e) 
 
-if __name__ == "__main__":
-    create_table()
-    uvicorn.run(app, port=8000, host="0.0.0.0")
+create_table()
+uvicorn.run(app, port=8000, host="0.0.0.0")
  
